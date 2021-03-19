@@ -1,0 +1,36 @@
+@Override
+    public Comparable centroDelGrafo() {
+        double menorExcentricidad = Integer.MAX_VALUE;
+        Comparable centro = null;
+        for (Comparable etiqueta : this.getVertices().keySet()) {
+            double excentricidadDelVertice = (double) this.obtenerExcentricidad(etiqueta);
+            if (excentricidadDelVertice < menorExcentricidad) {
+                menorExcentricidad = excentricidadDelVertice;
+                centro = etiqueta;
+            }
+        }
+        return centro;
+    }
+
+public Comparable obtenerExcentricidad(Comparable etiquetaVertice) {
+        Double[][] floyd = this.floyd();
+        double excentricidad = Integer.MIN_VALUE;
+        int indiceDeEtiqueta;
+        Object[] etiquetas = this.getVertices().keySet().toArray();
+        for (int indiceArray = 0; indiceArray < etiquetas.length; indiceArray++) {
+            if (((etiquetas[indiceArray])).equals(etiquetaVertice)) {
+                indiceDeEtiqueta = indiceArray;
+                for (int i = 0; i < floyd.length; i++) {
+                    if ( i != indiceDeEtiqueta && floyd[i][indiceDeEtiqueta] > excentricidad) {
+                        excentricidad = floyd[i][indiceDeEtiqueta];
+                    }
+                }
+                if (excentricidad == Integer.MAX_VALUE) {
+                    return -1;
+                } else {
+                    return excentricidad;
+                }
+            }
+        }
+        return Integer.MAX_VALUE;        
+    }

@@ -1,0 +1,15 @@
+1-El costo de montevideo a Rio de Janeiro es:
+	b- 3780
+2-El costo de montevideo a Curitiba es:
+	a- 2580
+3-Los servicios de mantenimiento se instalan en:
+	c- Curitiba
+
+Ejercicio 2:
+Hay conexiones entre todos los aeropuertos
+
+Ejercicio 3:
+Parte dos:
+	El orden de tiempo de ejecucion de este algoritmo es O(A) dado que 		en el peor de los casos donde todos los vertices se relacionan con 		todos los vertices se llamará al metodo con un vertice unicamente y 	se recorreran todas las adyacencias. En este caso las adyacencias 		serán V(V-1), como esto es > V el orden O(V+A) es en realidad O(A).
+Parte Tres:
+	Se visitaron todos. Para asegurarse de que se visiten todos se 	pueden recorrer los vertices en el metodo de grafo ejecutando la 	bpf si el vertice no esta visitado.

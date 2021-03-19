@@ -1,0 +1,19 @@
+public Double[][] floyd() {
+        Double[][] matrizFloyd = UtilGrafos.obtenerMatrizCostos(vertices);
+        matrizPredecesoresGrafo = inicializarMatriz(matrizFloyd.length);
+        for (int i = 0; i < matrizFloyd.length; i++) {
+            matrizFloyd[i][i] = 0.0;
+        }
+        for (int k = 0; k < matrizFloyd.length; k++) {
+            for (int i = 0; i < matrizFloyd.length; i++) {
+                for (int j = 0; j < matrizFloyd.length; j++) {
+                    if ((matrizFloyd[i][k] + matrizFloyd[k][j]) < matrizFloyd[i][j]) {
+                        matrizFloyd[i][j] = matrizFloyd[i][k] + matrizFloyd[k][j];
+                        matrizPredecesoresGrafo[i][j] = k + 0d;
+                    }
+                }
+            }
+        }
+        return matrizFloyd;
+        
+    }
